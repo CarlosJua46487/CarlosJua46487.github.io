@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XV Años La Xime</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+/* Estilos Generales */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #e0e0e0; /* Color de fondo sobrio y menos molesto */
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+        header {
+            background: url('ejemplo4.jpg') no-repeat center center/cover;
+            height: 100vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+        header h1 {
+            font-family: 'Lora', serif;
+            font-size: 4rem;
+            margin: 0;
+            padding: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+        header p {
+            font-size: 1.25rem;
+            margin: 10px 0;
+            font-weight: 300;
+        }
+        .navbar {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 10;
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 25px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .navbar a:hover {
+            background: rgba(0, 0, 0, 0.6);
+            transform: scale(1.1);
+        }
+        .countdown {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        .countdown h2 {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            margin: 0;
+        }
+        .countdown .time {
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+        .main-content {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            font-family: 'Lora', serif;
+            font-size: 2.5rem;
+            color: #333;
+            margin: 0 0 20px 0;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        /* Carrusel de Imágenes */
+        .image-carousel {
+            position: relative;
+            width: 800px;
+            height: 400px;
+            margin: 0 auto 40px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        .carousel-prev, .carousel-next {
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transform: translateY(-50%);
+            transition: background 0.3s, transform 0.3s;
+            z-index: 10;
+        }
+        .carousel-prev {
+            left: 15px;
+        }
+        .carousel-next {
+            right: 15px;
+        }
+        .carousel-prev:hover, .carousel-next:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+        .carousel-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .carousel-indicators button.active,
+        .carousel-indicators button:hover {
+            background-color: rgba(255, 255, 255, 1);
+            transform: scale(1.4);
+        }
+/* Confirmación de Asistencia */
+.rsvp-form {
+    text-align: center;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    margin-bottom: 30px;
+}
+
+.rsvp-form h3 {
+    font-family: 'Lora', serif;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.rsvp-form p {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0 0 20px 0;
+}
+
+.rsvp-button {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.rsvp-button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+.rsvp-button:active {
+    background-color: #444;
+}
+        .map iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s;
+        }
+        .back-to-top:hover {
+            background: #555;
+        }
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+                top: 10px;
+            }
+            .rsvp-form button {
+                width: 90%;
+            }
+        }
+        .faq {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .faq h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        .faq-item h3 {
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: relative;
+            padding-right: 30px;
+        }
+        .faq-item h3::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        .faq-item.active h3::after {
+            content: '-';
+            transform: rotate(180deg);
+        }
+        .faq-item p {
+            display: none;
+            font-size: 1.1rem;
+            color: #666;
+            padding-top: 10px;
+        }
+        .faq-item.active p {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="navbar">
+            <a href="#detalles">Detalles</a>
+            <a href="#itinerario">Itinerario</a>
+            <a href="#galeria">Galería</a>
+            <a href="#rsvp">Confirmación</a>
+            <a href="#ubicacion">Ubicación</a>
+            <a href="#faq">Preguntas Frecuentes</a>
+        </div>
+        <h1>¡Estás Invitado!</h1>
+        <p>Ven a celebrar con nosotros los XV Años de La Xime</p>
+        <div class="countdown">
+            <h2>Cuenta Regresiva</h2>
+            <div class="time"></div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Detalles del Evento -->
+        <div id="detalles" class="section">
+            <h2>Detalles del Evento</h2>
+            <p><strong>Fecha:</strong> 9 de Noviembre, 2025</p>
+            <p><strong>Hora:</strong> 5:00 PM</p>
+            <p><strong>Lugar:</strong> Blvd. Manuel Ávila Camacho 50 y 56, piso 1, Lomas - Virreyes, Lomas de Chapultepec, 11000 Ciudad de México</p>
+            <p><strong>Confirmación:</strong> Por favor confirma tu asistencia antes de mañana.</p>
+        </div>
+        
+        <!-- Itinerario -->
+        <div id="itinerario" class="section">
+            <h2>Itinerario</h2>
+            <p><strong>3:00 PM:</strong> Hora de tomar</p>
+            <p><strong>5:30 PM:</strong> Tomar más relajado</p>
+            <p><strong>7:00 PM:</strong> Hora de la comida</p>
+            <p><strong>8:30 PM:</strong> Tomar más fuerte</p>
+            <p><strong>10:00 PM:</strong> Cada quien a su casa</p>
+        </div>
+        
+        <!-- Galería Section -->
+        <div id="galeria" class="section image-carousel">
+            <div class="carousel-slide">
+                <img src="Ejemplo1.jpg" alt="Imagen 1">
+            </div>
+            <div class="carousel-slide">
+                <img src="Ejemplo2.jpg" alt="Imagen 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="Ejemplo3.jpg" alt="Imagen 3">
+            </div>
+            <button class="carousel-prev" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-next" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+            <div class="carousel-indicators">
+                <button class="indicator" onclick="showSlide(0)"></button>
+                <button class="indicator" onclick="showSlide(1)"></button>
+                <button class="indicator" onclick="showSlide(2)"></button>
+            </div>
+        </div>
+       
+        <!-- Ubicación -->
+        <div id="ubicacion" class="section map">
+            <h2>Ubicación del Evento</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.5860102121073!2d-99.20827145900563!3d19.43028530162525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d201f625554545%3A0xe6233b7f0b501dee!2sLomas%20Plaza!5e0!3m2!1ses!2smx!4v1722021600603!5m2!1ses!2smx" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        
+        <!-- Confirmación de Asistencia -->
+<div id="rsvp" class="section rsvp-form">
+    <h3>Confirma tu asistencia</h3>
+    <a href="https://api.whatsapp.com/send?phone=5543050419" class="rsvp-button">
+        Confirmar asistencia por WhatsApp
+    </a>
+</div>
+
+        <!-- Preguntas Frecuentes -->
+        <div id="faq" class="section faq">
+            <h2>Preguntas Frecuentes</h2>
+            <div class="faq-item">
+                <h3>¿Cuál es el código de vestimenta?</h3>
+                <p>Pants negro, camisa tipo polo y huaraches.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Puedo llevar acompañante?</h3>
+                <p>No, solo los invitados.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Habrá estacionamiento disponible?</h3>
+                <p>No disponible.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Contacto: karlasoto787@gmail.com | Teléfono: 56 2492 6551</p>
+        <p>Versión: 5.10.1</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Countdown Script -->
+    <script>
+        function updateCountdown() {
+            const eventDate = new Date('2025-11-09T17:00:00');
+            const now = new Date();
+            const timeRemaining = eventDate - now;
+
+            if (timeRemaining <= 0) {
+                document.querySelector('.countdown .time').innerHTML = '¡El evento ya ha comenzado!';
+                return;
+            }
+
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            document.querySelector('.countdown .time').innerHTML = `
+                ${days} días ${hours} horas ${minutes} minutos ${seconds} segundos
+            `;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+
+    <!-- Carousel Script -->
+    <script>
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const indicators = document.querySelectorAll('.carousel-indicators .indicator');
+            const totalSlides = slides.length;
+            
+            if (index >= totalSlides) currentIndex = 0;
+            else if (index < 0) currentIndex = totalSlides - 1;
+            else currentIndex = index;
+
+            slides.forEach((slide, i) => {
+                slide.style.opacity = (i === currentIndex) ? '1' : '0';
+                slide.style.transform = (i === currentIndex) ? 'translateX(0)' : 'translateX(-100%)';
+            });
+
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        setInterval(nextSlide, 5000); // Cambia la imagen cada 5 segundos
+
+        showSlide(currentIndex); // Mostrar la primera imagen al cargar
+    </script>
+
+    <!-- FAQ Script -->
+    <script>
+        document.querySelectorAll('.faq-item h3').forEach((header) => {
+            header.addEventListener('click', () => {
+                const faqItem = header.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
